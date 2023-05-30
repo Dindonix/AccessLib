@@ -22,9 +22,11 @@ A function that enables up and down arrow key navigation through the refArray.
 
 Parameters
 event (KeyboardEvent): The event object passed from the onKeyDown event.
+  
 Example
+  
 jsx
-Copy code
+
 import React, { useRef } from 'react';
 import useFocus from 'path/to/useFocus';
 
