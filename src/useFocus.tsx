@@ -15,13 +15,9 @@ const body = document.querySelector("body");
  *   setActiveFocus: React.Dispatch<React.SetStateAction<any>>
  * }} - Object containing two different functions: horizontalFocus and verticalFocus, along with activeFocus and setActiveFocus state variables.
  *
- * @function horizontalFocus - A function that enables left and right arrow key navigation through the refArray.
- * @param {KeyboardEvent} event - The event object passed from the onKeyDown event.
- *
- * @function verticalFocus - A function that enables up and down arrow key navigation through the refArray.
- * @param {KeyboardEvent} event - The event object passed from the onKeyDown event.
  *
  * @example
+ * ``` tsx
  * const ExampleComponent: React.FC = () => {
  *   const buttonRefs: RefObject<HTMLButtonElement>[] = [
  *     useRef<HTMLButtonElement>(null),
@@ -54,8 +50,13 @@ const body = document.querySelector("body");
  *     </>
  *   );
  * };
+ * ```
  */
-const useFocus = (refs: RefObject<HTMLElement>[], initialIndex?: number) => {
+
+const useFocus = (
+  refArray: RefObject<HTMLElement>[],
+  initialIndex?: number
+) => {
   const [activeFocus, setActiveFocus] = useState<number>(0);
 
   const focusButton = useCallback(
@@ -71,13 +72,19 @@ const useFocus = (refs: RefObject<HTMLElement>[], initialIndex?: number) => {
     focusButton(activeFocus);
   }, [activeFocus, focusButton]);
 
+  /**
+   *
+   * @function horizontalFocus - A function that enables left and right arrow key navigation through the refArray.
+   * @param {KeyboardEvent} event - The event object passed from the onKeyDown event.
+   */
+
   const horizontalFocus = (event: KeyboardEvent) => {
     const { key } = event;
     const focus = activeFocus;
 
     switch (key) {
       case "ArrowRight": {
-        setActiveFocus(Math.min(focus + 1, refs.length - 1));
+        setActiveFocus(Math.min(focus + 1, refArray.length - 1));
         break;
       }
 
@@ -88,13 +95,19 @@ const useFocus = (refs: RefObject<HTMLElement>[], initialIndex?: number) => {
     }
   };
 
+  /**
+   *
+   * @function verticalFocus - A function that enables up and down arrow key navigation through the refArray.
+   * @param {KeyboardEvent} event - The event object passed from the onKeyDown event.
+   */
+
   const verticalFocus = (event: KeyboardEvent) => {
     const { key } = event;
     const focus = activeFocus;
 
     switch (key) {
       case "ArrowDown": {
-        setActiveFocus(Math.min(focus + 1, refs.length - 1));
+        setActiveFocus(Math.min(focus + 1, refArray.length - 1));
         break;
       }
 
