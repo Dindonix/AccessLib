@@ -23,44 +23,5 @@ A function that enables up and down arrow key navigation through the refArray.
 Parameters
 event (KeyboardEvent): The event object passed from the onKeyDown event.
   
-Example
+
   
-jsx
-<>
-import React, { useRef } from 'react';
-import useFocus from 'path/to/useFocus';
-
-const ExampleComponent: React.FC = () => {
-  const buttonRefs = [
-    useRef<HTMLButtonElement>(null),
-    useRef<HTMLButtonElement>(null)
-  ];
-
-  const { horizontalFocus } = useFocus(buttonRefs);
-
-  return (
-    <>
-      <button
-        ref={buttonRefs[0]}
-        type="button"
-        onKeyDown={(event) => {
-          horizontalFocus(event);
-        }}
-      >
-        Button 1
-      </button>
-
-      <button
-        ref={buttonRefs[1]}
-        type="button"
-        onKeyDown={(event) => {
-          horizontalFocus(event);
-        }}
-      >
-        Button 2
-      </button>
-    </>
-  );
-};
-   </>
-This example demonstrates how to use the useFocus hook to enable keyboard navigation on buttons within a component. The buttonRefs array holds the references to the buttons. The horizontalFocus function is obtained from the hook and assigned to the onKeyDown event of each button, enabling left and right arrow key navigation.
