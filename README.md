@@ -26,7 +26,7 @@ event (KeyboardEvent): The event object passed from the onKeyDown event.
 Example
   
 jsx
-
+<>
 import React, { useRef } from 'react';
 import useFocus from 'path/to/useFocus';
 
@@ -62,4 +62,5 @@ const ExampleComponent: React.FC = () => {
     </>
   );
 };
+   </>
 This example demonstrates how to use the useFocus hook to enable keyboard navigation on buttons within a component. The buttonRefs array holds the references to the buttons. The horizontalFocus function is obtained from the hook and assigned to the onKeyDown event of each button, enabling left and right arrow key navigation.
