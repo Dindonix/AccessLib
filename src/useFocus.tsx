@@ -14,49 +14,9 @@ const body = document.querySelector("body");
  *   activeFocus: any,
  *   setActiveFocus: React.Dispatch<React.SetStateAction<any>>
  * }} - Object containing two different functions: horizontalFocus and verticalFocus, along with activeFocus and setActiveFocus state variables.
- *
- *
- * @example
- * ``` tsx
- * const ExampleComponent: React.FC = () => {
- *   const buttonRefs: RefObject<HTMLButtonElement>[] = [
- *     useRef<HTMLButtonElement>(null),
- *     useRef<HTMLButtonElement>(null)
- *   ];
- *
- *   const { horizontalFocus } = useFocus(buttonRefs);
- *
- *   return (
- *     <>
- *       <button
- *         ref={buttonRefs[0]}
- *         type="button"
- *         onKeyDown={(event) => {
- *           horizontalFocus(event);
- *         }}
- *       >
- *         Button 1
- *       </button>
- *
- *       <button
- *         ref={buttonRefs[1]}
- *         type="button"
- *         onKeyDown={(event) => {
- *           horizontalFocus(event);
- *         }}
- *       >
- *         Button 2
- *       </button>
- *     </>
- *   );
- * };
- * ```
  */
 
-const useFocus = (
-  refArray: RefObject<HTMLElement>[],
-  initialIndex?: number
-) => {
+const useFocus = (refArray: RefObject<HTMLElement>[], initialIndex?: number) => {
   const [activeFocus, setActiveFocus] = useState<number>(0);
 
   const focusButton = useCallback(
