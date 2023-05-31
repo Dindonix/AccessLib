@@ -52,6 +52,12 @@ const useFocus = (refArray: RefObject<HTMLElement>[], initialIndex?: number) => 
         setActiveFocus(Math.max(focus - 1, 0));
         break;
       }
+
+      case "Tab": {
+        event.preventDefault();
+        setActiveFocus(Math.min(focus + 1, refArray.length - 1));
+        break;
+      }
     }
   };
 
@@ -73,6 +79,12 @@ const useFocus = (refArray: RefObject<HTMLElement>[], initialIndex?: number) => 
 
       case "ArrowUp": {
         setActiveFocus(Math.max(focus - 1, 0));
+        break;
+      }
+
+      case "Tab": {
+        event.preventDefault();
+        setActiveFocus(Math.min(focus + 1, refArray.length - 1));
         break;
       }
     }
