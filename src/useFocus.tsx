@@ -54,8 +54,12 @@ const useFocus = (refArray: RefObject<HTMLElement>[], initialIndex?: number) => 
       }
 
       case "Tab": {
-        event.preventDefault();
-        setActiveFocus(Math.min(focus + 1, refArray.length - 1));
+        if (focus !== refArray.length - 1) {
+          event.preventDefault();
+          setActiveFocus(Math.min(focus + 1, refArray.length - 1));
+        } else {
+          setActiveFocus(Math.min(focus + 1, refArray.length - 1));
+        }
         break;
       }
     }
@@ -83,8 +87,12 @@ const useFocus = (refArray: RefObject<HTMLElement>[], initialIndex?: number) => 
       }
 
       case "Tab": {
-        event.preventDefault();
-        setActiveFocus(Math.min(focus + 1, refArray.length - 1));
+        if (focus !== refArray.length - 1) {
+          event.preventDefault();
+          setActiveFocus(Math.min(focus + 1, refArray.length - 1));
+        } else {
+          setActiveFocus(Math.min(focus + 1, refArray.length - 1));
+        }
         break;
       }
     }
