@@ -80,7 +80,7 @@ useEscapeKey is a custom React hook that let you focus any HTMLElement by pressi
 
 #### <u>Parameter</u>
 
-ref - A ref that require an RefObject<HTMLElement> type.
+ref - A ref that require a RefObject<HTMLElement> type.
 
 _Here an example_ :
 
@@ -95,8 +95,8 @@ const ExampleComponent(): JSX.Element {
       <section>
         <header>
           <ul>
-                 <li ref={escapeRef}>
-                 </li>
+               <li ref={escapeRef}>
+               </li>
           </ul>
         </header>
         <main>
