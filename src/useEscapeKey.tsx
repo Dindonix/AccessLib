@@ -11,15 +11,11 @@ const useEscapeKey = (ref: RefObject<HTMLElement>) => {
     ref.current?.focus();
   }, []);
 
-  const onEscape = (ref: RefObject<HTMLElement>): void => {
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        handleEscape(ref);
-      }
-    });
-  };
-
-  onEscape(ref);
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      handleEscape(ref);
+    }
+  });
 };
 
 export default useEscapeKey;
