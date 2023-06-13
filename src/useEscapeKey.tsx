@@ -1,21 +1,31 @@
-import { RefObject, useCallback } from "react";
+import { RefObject, useCallback, useEffect } from "react";
 
 /**
  *
  * @param {RefObject<HTMLElement>} ref - A ref that require an RefObject<HTMLElement> type.
- *
+ * @param {() => void} [callback] - Optional callback function.
  */
+const useEscapeKey = (callbackOrRef: (() => void) | RefObject<HTMLElement>) => {
+  const handleEscape = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        if (typeof callbackOrRef === "function") {
+          callbackOrRef();
+        } else if (callbackOrRef !== null) {
+          callbackOrRef.current?.focus();
+        }
+      }
+    },
+    [callbackOrRef]
+  );
 
-const useEscapeKey = (ref: RefObject<HTMLElement>) => {
-  const handleEscape = useCallback((ref: RefObject<HTMLElement>) => {
-    ref.current?.focus();
-  }, []);
+  useEffect(() => {
+    window.addEventListener("keydown", handleEscape);
 
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      handleEscape(ref);
-    }
-  });
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [handleEscape]);
 };
 
 export default useEscapeKey;

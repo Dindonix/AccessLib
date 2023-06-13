@@ -92,15 +92,27 @@ useEscapeKey is a custom React hook that let you focus any HTMLElement by pressi
 
 #### <u>Parameter</u>
 
-ref - A ref that require a RefObject<HTMLElement> type.
+ref - An optional ref that require a RefObject<HTMLElement> type.
+
+callback - Optional callback function.
 
 _Here an example_ :
 
 ```tsx
 const ExampleComponent(): JSX.Element {
   const escapeRef = useRef<HTMLElement>(null);
+  const [modal, setModal] = useState(false);
 
-  useEscapeKey(escapeRef);
+
+  const openModal = () => {
+    setModal(true);
+  };
+
+  useEscapeKey(escapeRef || closeModal);
+
+  const closeModal = () => {
+    setModal(false);
+  };
 
   return (
     <>
