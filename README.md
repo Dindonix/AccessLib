@@ -2,9 +2,9 @@
 
 AccessLib is a React library that provides easy-to-use hooks for accessibility handling.
 
-## <u>**useFocus()**</u>
+## <u>**useArrows()**</u>
 
-useFocus is a custom React hook that enables keyboard navigation on a large range of components.
+useArrows is a custom React hook that enables keyboard navigation on a large range of components.
 
 ### <u>Parameters</u>
 
@@ -20,9 +20,11 @@ An object containing the following properties:
 
 2. verticalFocus (function): A function that enables up and down arrow key navigation through the refArray.
 
-3. activeFocus: Any type.
+3. mouseFocus (function): A function that put the focus on the current index onClick.
 
-4. setActiveFocus : A state setter function for activeFocus.
+4. activeFocus: Any type.
+
+5. setActiveFocus : A state setter function for activeFocus.
 
 ### <u>Function</u>
 
@@ -40,6 +42,10 @@ verticalFocus: A function that enables up and down arrow key navigation through 
 
 event (KeyboardEvent): The event object passed from the _onKeyDown_ event.
 
+### <u>Function</u>
+
+mouseFocus: A function that put the focus on the clicked element so we don't loose track of the current index inside the refArray.
+
 _Here an example_ :
 
 ```tsx
@@ -56,6 +62,9 @@ const ExampleComponent: React.FC = () => {
         onKeyDown={(event) => {
           horizontalFocus(event);
         }}
+        onClick={() => {
+          mouseFocus();
+        }}
       >
         Button 1
       </button>
@@ -65,6 +74,9 @@ const ExampleComponent: React.FC = () => {
         type="button"
         onKeyDown={(event) => {
           horizontalFocus(event);
+        }}
+        onClick={() => {
+          mouseFocus();
         }}
       >
         Button 2
@@ -104,4 +116,50 @@ const ExampleComponent(): JSX.Element {
     );
 };
 
+```
+
+## **useOuterClick()**
+
+useOuterClick is a custum hook that allow to close an HTMLElement by clicking outside of it.
+
+Note that the ref is placed on a children element in order to get a parent element to click on (to close the children).
+
+#### <u>Parameter</u>
+
+ref - A ref that require a RefObject<HTMLElement> type.
+
+callback - A callback function that close the the element by inversing the boolean value of a useState.
+
+_Here an example_ :
+
+```tsx
+const exampleModal = () => {
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+  const clickRef = useRef<HTMLElement>();
+
+  const openErrorModal = () => {
+    setIsErrorModalOpen(true);
+  };
+
+  const closeErrorModal = () => {
+    setIsErrorModalOpen(false);
+  };
+
+  useOuterClick(clickRef, closeErrorModal);
+
+  return (
+    <div>
+      <button onClick={openErrorModal}>buttonText</button>
+
+      {isErrorModalOpen && (
+        <dialog ref={clickRef}>
+          <div>
+            <p>modalContent</p>
+            <button onClick={closeErrorModal}>close</button>
+          </div>
+        </dialog>
+      )}
+    </div>
+  );
+};
 ```

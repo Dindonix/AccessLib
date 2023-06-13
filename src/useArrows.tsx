@@ -34,6 +34,16 @@ const useFocus = (refArray: RefObject<HTMLElement>[], initialIndex?: number) => 
 
   /**
    *
+   * @function mouseFocus - A function that put the focus on the current index onClick.
+   * @param {MouseEvent} event - The event object passed from the onClick event.
+   */
+
+  const mouseFocus = () => {
+    setActiveFocus(refArray.findIndex((ref) => ref.current === document.activeElement));
+  };
+
+  /**
+   *
    * @function horizontalFocus - A function that enables left and right arrow key navigation through the refArray.
    * @param {KeyboardEvent} event - The event object passed from the onKeyDown event.
    */
@@ -98,7 +108,7 @@ const useFocus = (refArray: RefObject<HTMLElement>[], initialIndex?: number) => 
     }
   };
 
-  return { horizontalFocus, verticalFocus, activeFocus, setActiveFocus };
+  return { horizontalFocus, verticalFocus, activeFocus, setActiveFocus, mouseFocus };
 };
 
 export default useFocus;
