@@ -1,18 +1,61 @@
-# AccessLib
+# <span style="font-size: 60px;">AccessLib</span>
 
-AccessLib is a React library that provides easy-to-use hooks for accessibility handling.
+_AccessLib is a React library that provides easy-to-use hooks and unstyled accessible components for accessibility handling._
 
-## <u>**useArrows()**</u>
+# **Components**
+
+## **Accordion Component**
+
+The Accordion component is a React component that provides a simple and customizable way to create an accordion-style UI, where users can click on a question to reveal its corresponding answer.
+
+## Installation
+
+To use the Accordion component in your React project, you need to have `react` and `nanoid` installed as dependencies. If you haven't already installed them, you can do so with npm or yarn:
+
+```bash
+npm install react nanoid
+```
+
+## Usage
+
+1. Import the `Accordion` component into your React component:
+
+```jsx
+import Accordion from "./path/to/Accordion";
+```
+
+2. Use the Accordion component in your JSX, providing the necessary props:
+
+```jsx
+<Accordion
+  questions={[
+    { question: "Question 1", answer: "Answer 1" },
+    { question: "Question 2", answer: "Answer 2" },
+    { question: "Question 3", answer: "Answer 3" },
+  ]}
+  styles={{
+    container: "accordion-container",
+    childContainer: "accordion-child-container",
+    details: "accordion-details-tag",
+    question: "accordion-question",
+    answer: "accordion-answer",
+  }}
+/>
+```
+
+# **Hooks**
+
+## **useArrows()**
 
 useArrows is a custom React hook that enables keyboard navigation on a large range of components.
 
-### <u>Parameters</u>
+### Parameters
 
 1. refArray (Array<RefObject<HTMLElement>>): An array of RefObjects that require an HTMLElement type (mandatory).
 
 2. initialIndex (number, optional): A number representing the initial index of the refArray, providing an option for positioning the initial focus on mount.
 
-### <u>Returns</u>
+### Returns
 
 An object containing the following properties:
 
@@ -26,23 +69,23 @@ An object containing the following properties:
 
 5. setActiveFocus : A state setter function for activeFocus.
 
-### <u>Function</u>
+### Function
 
 horizontalFocus : A function that enables left and right arrow key navigation through the refArray.
 
-#### <u>Parameter</u>
+#### Parameter
 
 event (KeyboardEvent): The event object passed from the _onKeyDown_ event.
 
-### <u>Function</u>
+### Function
 
 verticalFocus: A function that enables up and down arrow key navigation through the refArray.
 
-#### <u>Parameter</u>
+#### Parameter
 
 event (KeyboardEvent): The event object passed from the _onKeyDown_ event.
 
-### <u>Function</u>
+### Function
 
 mouseFocus: A function that put the focus on the clicked element so we don't loose track of the current index inside the refArray.
 
@@ -90,7 +133,7 @@ const ExampleComponent: React.FC = () => {
 
 useEscapeKey is a custom React hook that let you focus any HTMLElement by pressing the Escape keyframe.
 
-#### <u>Parameter</u>
+#### Parameter
 
 ref - An optional ref that require a RefObject<HTMLElement> type.
 
@@ -136,7 +179,7 @@ useOuterClick is a custum hook that allow to close an HTMLElement by clicking ou
 
 Note that the ref is placed on a children element in order to get a parent element to click on (to close the children).
 
-#### <u>Parameter</u>
+#### Parameter
 
 ref - A ref that require a RefObject<HTMLElement> type.
 
