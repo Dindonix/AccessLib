@@ -63,7 +63,13 @@ npm install react nanoid
 import Tabs from "./path/to/Tabs";
 ```
 
-2. Use the Tabs component in your JSX, providing the necessary props:
+2. Import the `useTabAttributes` hook into your React component:
+
+```jsx
+import useTabAttributes from "../hooks/useTabAttributes";
+```
+
+3. Use the Tabs component in your JSX, providing the necessary props:
 
 ```jsx
 <Tabs
