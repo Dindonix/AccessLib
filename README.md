@@ -43,6 +43,46 @@ import Accordion from "./path/to/Accordion";
 />
 ```
 
+## **Tabs Component**
+
+A custom Tabs component for React that allows you to create a tabbed interface. Each tab consists of a label and corresponding content.
+
+## Installation
+
+To use the Tabs component in your React project, you need to have `react` and `nanoid` installed as dependencies. If you haven't already installed them, you can do so with npm or yarn:
+
+```bash
+npm install react nanoid
+```
+
+## Usage
+
+1. Import the `Tabs` component into your React component:
+
+```jsx
+import Tabs from "./path/to/Tabs";
+```
+
+2. Use the Tabs component in your JSX, providing the necessary props:
+
+```jsx
+<Tabs
+  tabs={[
+    { label: "Tab 1", content: "This is the content of Tab 1" },
+    { label: "Tab 2", content: "This is the content of Tab 2" },
+    { label: "Tab 3", content: "This is the content of Tab 3" },
+  ]}
+  styles={{
+    container: "tabs-container",
+    childContainer: "tabs-childContainer",
+    tabs: "tabs-tabs",
+    activeTabs: "tabs-activeTabs",
+    tabpanelContainer: "tabs-tabpanelContainer",
+    tabpanels: "tabs-tabpanels",
+  }}
+/>
+```
+
 # **Hooks**
 
 ## **useArrows()**
