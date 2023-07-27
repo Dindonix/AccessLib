@@ -4,6 +4,73 @@ _AccessLib is a React library that provides easy-to-use hooks and unstyled acces
 
 # **Components**
 
+## **Accessibility menu Component**
+
+The AccessibilityMenu component is a React component that provides a simple and customizable way to implement a menu that will allow your users to personalize the whole website as they want. Multiple options are available for reusability. All of this is possible thanks to the compound component pattern.
+
+## Installation
+
+To use the AccessibilityMenu component in your React project, you need to have `react` installed as dependencies.
+
+## Usage
+
+1. Import the `AccessibilityMenu` component into your React component:
+
+```jsx
+import AccessibilityMenu from "./path/to/AccessibilityMenu";
+```
+
+2. Use the AccessibilityMenu component in your JSX, providing the necessary props:
+
+### Option: The option props will allow you to choose between 4 possibilities and need to be put on the <Menu.Select />:
+
+- fontSize (to change the font size between 3 values)
+- line (to change the line height between 3 values)
+- image (to hide the images)
+- fontChange (to choose the font of your choice)
+
+### Values: The value props will allow you to choose between 3 possibilities and need to be put on the <Menu.Option>. It is only available with the "fontSize" and "line" options like this.
+
+- Default
+- Large
+- ExtraLarge
+
+For the "image" option you can choose between
+
+- visible
+- hidden
+
+For the "fontChange" option, just fill the values with any font family available to you.
+
+### Label: The label props let you write down the name of the select button of your choice accordingly with the option you chose.
+
+```jsx
+<Menu aria-label="Accessibility menu" className="MenuClass">
+  <Menu.SelectList className="SelectListClass ">
+    <Menu.Select labelStyle="labeClass" label="Change the font size" option="fontSize" className="SelectClass">
+      <Menu.Option value="Default">Default</Menu.Option>
+      <Menu.Option value="Large">Large</Menu.Option>
+      <Menu.Option value="ExtraLarge">Extra Large</Menu.Option>
+    </Menu.Select>
+    <Menu.Select labelStyle="labeClass" label="Change the line spacing" option="line" className="SelectListClass">
+      <Menu.Option value="Default">Default</Menu.Option>
+      <Menu.Option value="Large">Large</Menu.Option>
+      <Menu.Option value="ExtraLarge">Extra Large</Menu.Option>
+    </Menu.Select>
+    <Menu.Select labelStyle="labeClass" label="Display images" option="image" className="SelectListClass">
+      <Menu.Option value="visible">visible</Menu.Option>
+      <Menu.Option value="hidden">hidden</Menu.Option>
+    </Menu.Select>
+    <Menu.Select labelStyle="labeClass" label="Change the font" option="fontChange" className="SelectListClass">
+      <Menu.Option value="Basis, arial">Default</Menu.Option>
+      <Menu.Option value="Georgia, serif">Georgia</Menu.Option>
+      <Menu.Option value="fantasy">Fantasy</Menu.Option>
+      <Menu.Option value="cursive">Cursive</Menu.Option>
+    </Menu.Select>
+  </Menu.SelectList>
+</Menu>
+```
+
 ## **Accordion Component**
 
 The Accordion component is a React component that provides a simple and customizable way to create an accordion-style UI, where users can click on a question to reveal its corresponding answer.

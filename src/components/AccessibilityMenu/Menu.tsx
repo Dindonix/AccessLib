@@ -29,9 +29,9 @@ export const Menu = ({ children, ...rest }: Props) => {
 
   const changeLineHeight = useCallback((selectedValue: string) => {
     const lineHeightValues: { [key: string]: string } = {
-      Default: "1.5",
-      Large: "2",
-      ExtraLarge: "2.5",
+      Default: "1",
+      Large: "1.5",
+      ExtraLarge: "2",
     };
 
     const items = document.querySelectorAll<HTMLElement>("p, li");
