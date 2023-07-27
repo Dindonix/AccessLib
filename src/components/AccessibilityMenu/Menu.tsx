@@ -8,8 +8,9 @@ import {
   type SetStateAction,
 } from "react";
 
-import { Button, type SelectState } from "./Button";
-import { ButtonList } from "./ButtonList";
+import { Option } from "./Option";
+import { Select, type SelectState } from "./Select";
+import { SelectList } from "./SelectList";
 
 type State = {
   selectButton: SelectState[];
@@ -28,15 +29,14 @@ export const Menu = ({ children, ...rest }: Props) => {
 
   const changeLineHeight = useCallback((selectedValue: string) => {
     const lineHeightValues: { [key: string]: string } = {
-      Default: "1",
-      Large: "1.5",
-      ExtraLarge: "2",
+      Default: "1.5",
+      Large: "2",
+      ExtraLarge: "2.5",
     };
 
     const items = document.querySelectorAll<HTMLElement>("p, li");
 
     items.forEach((item) => {
-      console.log(item);
       item.style.lineHeight = lineHeightValues[selectedValue];
     });
   }, []);
@@ -109,14 +109,18 @@ export const Menu = ({ children, ...rest }: Props) => {
 
   useEffect(() => {
     for (const selectState of state.selectButton) {
-      if (selectState.option === "fontSize") {
-        selectState.ref.current?.addEventListener("change", handleChangeFontSize);
-      } else if (selectState.option === "fontChange") {
-        selectState.ref.current?.addEventListener("change", handleChangeFont);
-      } else if (selectState.option === "line") {
-        selectState.ref.current?.addEventListener("change", handleChangeLine);
-      } else if (selectState.option === "image") {
-        selectState.ref.current?.addEventListener("change", handleChangeImage);
+      const select = selectState.ref.current;
+
+      if (select !== null) {
+        if (selectState.option === "fontSize") {
+          select.addEventListener("change", handleChangeFontSize);
+        } else if (selectState.option === "fontChange") {
+          select.addEventListener("change", handleChangeFont);
+        } else if (selectState.option === "line") {
+          select.addEventListener("change", handleChangeLine);
+        } else if (selectState.option === "image") {
+          select.addEventListener("change", handleChangeImage);
+        }
       }
     }
 
@@ -142,5 +146,6 @@ export const Menu = ({ children, ...rest }: Props) => {
   );
 };
 
-Menu.Button = Button;
-Menu.ButtonList = ButtonList;
+Menu.Option = Option;
+Menu.Select = Select;
+Menu.SelectList = SelectList;
